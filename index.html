@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly expediture</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <header><h1>Monthly Expendture</h1></header>
+    <main>
+        <div class="chart">
+            <div class="diagram"><canvas id="chart" height="500px" width="500px"></canvas></div>
+            <div class="diagram"><canvas id="pie-chart" width="400px" height="400px"></canvas></div>
+        </div>
+    </main>
+    
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    let chartContainer=document.querySelector("#chart");
+    let pie_container=document.querySelector("#pie-chart")
+    Chart.defaults.color="white";
+    let newChart=new Chart(chartContainer, {
+    type: 'bar',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      datasets: [{
+        label: 'Rs.(Thousand)',
+        data: [12, 19, 13, 15, 12, 13],
+        borderWidth: 1,
+        backgroundColor:['#FF8080','#FFCF96','#CDFAD5','#D0BFFF','rgba(168, 223, 142,1)','#FFBFBF'],
+        borderColor:"grey",
+        color:'red',
+      }]
+    },
+    options: {
+      scales: {
+        x:{
+            grid:{
+            color:'grey',
+            
+          }
+        },
+        y: {
+          beginAtZero: true,
+          grid:{
+            color:'grey',
+          }
+        }
+      },
+      colors: {
+      enabled: true
+    }
+    }
+  });
+  Chart.defaults.color="white";
+
+  let pieChart=
+  new Chart(pie_container, {
+    type: 'pie',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      datasets: [{
+        label: 'Rs.(Thousand)',
+        data: [12, 19, 13, 15, 12, 13],
+        borderWidth: 1,
+        backgroundColor:['#FF8080','#FFCF96','#CDFAD5','#D0BFFF','#FFBFBF','rgba(168, 223, 142,1)'],
+        borderColor:"grey",
+        color:'red',
+      }]
+    },
+    options: {
+      scales: {
+        x:{
+           
+        },
+        y: {
+          beginAtZero: true,
+          
+        }
+      },
+      colors: {
+      enabled: true
+    }
+    }
+  });
+
+  const chartAnimation = anime({
+    targets: newChart.data.datasets[0].data,
+    easing: 'linear',
+    delay: anime.stagger(300),
+    duration: 1000,
+   
+});
+
+</script>
+</html>
