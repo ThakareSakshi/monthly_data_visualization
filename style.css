@@ -34,3 +34,8 @@ canvas{
     width: 400px;
     object-fit: cover;
 }
+@media (max-width:1000px){
+ .chart{
+    flex-direction: column;
+ }
+}
